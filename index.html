@@ -15,16 +15,18 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background-color: #ffffff;
+            background-color: #f8f8f8;
+            font-family: Arial, Helvetica, sans-serif;
         }
+
+        /* ===== BRAND TEXT ===== */
         .text {
             font-family: "Times New Roman", Times, serif;
             font-size: 10vw;
             font-weight: bold;
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
 
-            /* Gradient chéo 7 sắc – màu gốc */
             background: linear-gradient(
                 135deg,
                 red,
@@ -40,24 +42,85 @@
             background-clip: text;
             color: transparent;
 
-            /* VIỀN CHỮ (stroke) */
             -webkit-text-stroke: 1.5px rgba(255,255,255,1);
-
-            /* Đổ bóng đậm */
             text-shadow: 4px 4px 14px rgba(0, 0, 0, 0.35);
         }
+
         .logo {
             width: 220px;
+            margin-bottom: 105px;
+        }
+
+        /* ===== APP SECTION ===== */
+        .app-section {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 22px;
+            border-radius: 14px;
+            background: #f6f6f6;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+            text-decoration: none;
+            color: #000;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .app-section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+        }
+
+        .app-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 16px;
+        }
+
+        .app-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .app-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .app-desc {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .store-link {
+            font-size: 13px;
+            color: #1a73e8;
+            margin-top: 4px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Text trên -->
+    <!-- Brand -->
     <div class="text">KT Studio</div>
-
-    <!-- Logo dưới -->
     <img class="logo" src="logo.png" alt="KT Studio Logo">
+
+    <!-- App Introduction -->
+    <a class="app-section"
+       href="https://play.google.com/store/apps/details?id=com.ktdeveloper.beerscatcher"
+       target="_blank"
+       rel="noopener">
+
+        <!-- App Icon -->
+        <img class="app-icon" src="beerscatcher-icon.png" alt="Beers Catcher Icon">
+
+        <!-- App Info -->
+        <div class="app-info">
+            <div class="app-title">Beers Catcher</div>
+            <div class="app-desc">Casual game – Catch the beers and score points!</div>
+            <div class="store-link">View on Google Play</div>
+        </div>
+    </a>
 
 </body>
 </html>
