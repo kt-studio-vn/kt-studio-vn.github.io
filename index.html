@@ -50,22 +50,22 @@ header {
 
 /* ===== Navigation ===== */
 nav a {
-  margin: 0 15px;
+  margin: 0 18px;
   text-decoration: none;
   color: #444;
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   font-weight: 500;
   cursor: pointer;
   transition: .2s;
 }
 
 nav a.active {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: #000;
 }
 
-/* ===== Sections (fade + slide) ===== */
+/* ===== Sections ===== */
 .section {
   position: absolute;
   width: 100%;
@@ -104,13 +104,26 @@ nav a.active {
   margin: auto;
 }
 
+/* ===== About text ===== */
+.about-text {
+  max-width: 720px;
+  margin: 30px auto 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #444;
+}
+
+.about-text p {
+  margin-bottom: 16px;
+}
+
 /* ===== Games (x2 size) ===== */
 .game-item {
   display: inline-block;
-  width: 480px;                 /* ⬅ gấp đôi */
+  width: 480px;
   background: #fff;
   border-radius: 28px;
-  padding: 40px;                /* ⬅ tăng padding */
+  padding: 40px;
   cursor: pointer;
   box-shadow: 0 14px 35px rgba(0,0,0,.15);
   transition: .3s;
@@ -122,14 +135,14 @@ nav a.active {
 }
 
 .game-item img {
-  width: 260px;                 /* ⬅ icon to gấp đôi */
+  width: 260px;
   border-radius: 40px;
 }
 
 .game-item h3 {
   margin: 22px 0 10px;
   font-family: "Times New Roman", Times, serif;
-  font-size: 1.9rem;            /* ⬅ chữ to */
+  font-size: 1.9rem;
 }
 
 .game-item span {
@@ -154,7 +167,10 @@ nav a.active {
   margin-bottom: 30px;
 }
 
-/* title */
+.contact-item {
+  margin-bottom: 26px;
+}
+
 .contact-item strong {
   display: block;
   font-size: 0.95rem;
@@ -168,13 +184,11 @@ nav a.active {
   color: #222;
 }
 
-/* text */
 .contact-text {
   margin: 6px 0 14px;
   font-size: 1rem;
 }
 
-/* buttons */
 .contact-btn {
   display: inline-block;
   padding: 10px 18px;
@@ -203,7 +217,7 @@ nav a.active {
 
 .footer a {
   display: inline-block;
-  margin-left: 12px;
+  margin-top: 10px;
   padding: 6px 14px;
   border-radius: 20px;
   background: #444;
@@ -231,14 +245,28 @@ nav a.active {
   </nav>
 </header>
 
-<!-- HOME -->
+<!-- ABOUT -->
 <div id="homeSection" class="section active">
   <div class="home-logo">
     <img src="logo.png" alt="KT Studio">
   </div>
+
   <div class="hero">
     <h1>We craft games, entertainment & joy.</h1>
-    <p>Chào mừng bạn đến với KT Studio – nơi sáng tạo game và trải nghiệm thú vị</p>
+    <p>Welcome to KT Studio – a place where creativity meets fun.</p>
+
+    <div class="about-text">
+      <p>
+        KT Studio is an independent game studio focused on creating fun,
+        accessible and engaging mobile games for players around the world.
+      </p>
+      <p>
+        We believe that simple ideas, when crafted with care and creativity,
+        can deliver joyful and memorable experiences. Every product we build
+        is designed with smooth gameplay, originality and long-term
+        entertainment value in mind.
+      </p>
+    </div>
   </div>
 </div>
 
@@ -248,7 +276,7 @@ nav a.active {
        onclick="window.open('https://play.google.com/store/apps/details?id=com.ktdeveloper.beerscatcher','_blank')">
     <img src="beerscatcher-icon.png" alt="Beers Catcher">
     <h3>Beers Catcher</h3>
-    <span>Google Play</span>
+    <span>Available on Google Play</span>
   </div>
 </div>
 
@@ -260,28 +288,22 @@ nav a.active {
     <div class="contact-item">
       <strong class="contact-title">Email</strong>
       <p class="contact-text">ktdeveloper51@gmail.com</p>
-      <a class="contact-btn" href="mailto:ktdeveloper51@gmail.com">
-        Send Email
-      </a>
-    </div><br>
+      <a class="contact-btn" href="mailto:ktdeveloper51@gmail.com">Send Email</a>
+    </div>
 
     <div class="contact-item">
       <strong class="contact-title">Facebook</strong>
-      <a class="contact-btn"
-         href="https://www.facebook.com/gaming/KTDeveloper"
-         target="_blank">
+      <a class="contact-btn" href="https://www.facebook.com/gaming/KTDeveloper" target="_blank">
         Facebook Page
       </a>
-    </div><br>
+    </div>
 
     <div class="contact-item">
       <strong class="contact-title">Store</strong>
-      <a class="contact-btn"
-         href="https://play.google.com/store/apps/dev?id=6471557478946980298"
-         target="_blank">
+      <a class="contact-btn" href="https://play.google.com/store/apps/dev?id=6471557478946980298" target="_blank">
         Google Play Store
       </a>
-    </div><br>
+    </div>
 
     <div class="contact-item">
       <strong class="contact-title">Address</strong>
@@ -296,7 +318,7 @@ nav a.active {
 
 <!-- FOOTER -->
 <div class="footer">
-  © 2026 KT Studio – All rights reserved.<br><br>
+  © 2026 KT Studio – All rights reserved.<br>
   <a href="https://sites.google.com/site/ktdeveloper51" target="_blank">
     Privacy Policy
   </a>
@@ -304,12 +326,10 @@ nav a.active {
 
 <script>
 function showSection(id, el) {
-  document.querySelectorAll('.section')
-    .forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 
-  document.querySelectorAll('nav a')
-    .forEach(a => a.classList.remove('active'));
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
   el.classList.add('active');
 }
 </script>
