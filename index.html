@@ -1,126 +1,318 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <title>KT Studio</title>
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-        }
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-color: #f8f8f8;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KT Studio</title>
 
-        /* ===== BRAND TEXT ===== */
-        .text {
-            font-family: "Times New Roman", Times, serif;
-            font-size: 10vw;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 20px;
+<style>
+* { box-sizing: border-box; }
 
-            background: linear-gradient(
-                135deg,
-                red,
-                orange,
-                yellow,
-                green,
-                cyan,
-                blue,
-                violet
-            );
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            color: transparent;
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #eceff1;
+  color: #222;
+}
 
-            -webkit-text-stroke: 1.5px rgba(255,255,255,1);
-            text-shadow: 4px 4px 14px rgba(0, 0, 0, 0.35);
-        }
+/* ===== Header ===== */
+header {
+  background: rgba(255,255,255,.85);
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
 
-        .logo {
-            width: 220px;
-            margin-bottom: 105px;
-        }
+/* ===== Logo ===== */
+.logo-text {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 50px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  background: linear-gradient(
+    90deg,
+    #ff0000,
+    #ff7f00,
+    #ffff00,
+    #00ff00,
+    #00ffff,
+    #0000ff,
+    #8b00ff
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(0,0,0,.45);
+  user-select: none;
+}
 
-        /* ===== APP SECTION ===== */
-        .app-section {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 16px 22px;
-            border-radius: 14px;
-            background: #f6f6f6;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-            text-decoration: none;
-            color: #000;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
+/* ===== Navigation ===== */
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #444;
+  font-size: 1.3rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: .2s;
+}
 
-        .app-section:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 26px rgba(0,0,0,0.18);
-        }
+nav a.active {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #000;
+}
 
-        .app-icon {
-            width: 72px;
-            height: 72px;
-            border-radius: 16px;
-        }
+/* ===== Sections (fade + slide) ===== */
+.section {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(25px);
+  pointer-events: none;
+  transition: opacity .45s ease, transform .45s ease;
+  padding: 50px 20px;
+  background: #e3e6e8;
+  text-align: center;
+}
 
-        .app-info {
-            display: flex;
-            flex-direction: column;
-        }
+.section.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  position: relative;
+}
 
-        .app-title {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 4px;
-        }
+/* ===== Home ===== */
+.home-logo img {
+  width: 350px;
+  margin: 40px 0 20px;
+}
 
-        .app-desc {
-            font-size: 14px;
-            color: #555;
-        }
+.hero h1 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 2.6rem;
+  margin-bottom: 12px;
+}
 
-        .store-link {
-            font-size: 13px;
-            color: #1a73e8;
-            margin-top: 4px;
-        }
-    </style>
+.hero p {
+  font-size: 1.1rem;
+  color: #555;
+  max-width: 640px;
+  margin: auto;
+}
+
+/* ===== Games (x2 size) ===== */
+.game-item {
+  display: inline-block;
+  width: 480px;                 /* ⬅ gấp đôi */
+  background: #fff;
+  border-radius: 28px;
+  padding: 40px;                /* ⬅ tăng padding */
+  cursor: pointer;
+  box-shadow: 0 14px 35px rgba(0,0,0,.15);
+  transition: .3s;
+}
+
+.game-item:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 22px 50px rgba(0,0,0,.22);
+}
+
+.game-item img {
+  width: 260px;                 /* ⬅ icon to gấp đôi */
+  border-radius: 40px;
+}
+
+.game-item h3 {
+  margin: 22px 0 10px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.9rem;            /* ⬅ chữ to */
+}
+
+.game-item span {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* ===== Contact ===== */
+.contact-box {
+  max-width: 520px;
+  margin: auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,.15);
+  text-align: left;
+}
+
+.contact-box h2 {
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  margin-bottom: 30px;
+}
+
+/* title */
+.contact-item strong {
+  display: block;
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.contact-item strong.contact-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #222;
+}
+
+/* text */
+.contact-text {
+  margin: 6px 0 14px;
+  font-size: 1rem;
+}
+
+/* buttons */
+.contact-btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 25px;
+  background: #222;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: .25s;
+}
+
+.contact-btn:hover {
+  background: #000;
+  transform: translateY(-2px);
+}
+
+/* ===== Footer ===== */
+.footer {
+  background: #222;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  font-size: .9rem;
+}
+
+.footer a {
+  display: inline-block;
+  margin-left: 12px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: #444;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: .2s;
+}
+
+.footer a:hover {
+  background: #666;
+}
+</style>
 </head>
+
 <body>
 
-    <!-- Brand -->
-    <div class="text">KT Studio</div>
-    <img class="logo" src="logo.png" alt="KT Studio Logo">
+<header>
+  <span class="logo-text">KT Studio</span>
+  <nav>
+    <a class="active" onclick="showSection('homeSection', this)">About</a>
+    <a onclick="showSection('gamesSection', this)">Games</a>
+    <a onclick="showSection('contactSection', this)">Contact</a>
+  </nav>
+</header>
 
-    <!-- App Introduction -->
-    <a class="app-section"
-       href="https://play.google.com/store/apps/details?id=com.ktdeveloper.beerscatcher"
-       target="_blank"
-       rel="noopener">
+<!-- HOME -->
+<div id="homeSection" class="section active">
+  <div class="home-logo">
+    <img src="logo.png" alt="KT Studio">
+  </div>
+  <div class="hero">
+    <h1>We craft games, entertainment & joy.</h1>
+    <p>Chào mừng bạn đến với KT Studio – nơi sáng tạo game và trải nghiệm thú vị</p>
+  </div>
+</div>
 
-        <!-- App Icon -->
-        <img class="app-icon" src="beerscatcher-icon.png" alt="Beers Catcher Icon">
+<!-- GAMES -->
+<div id="gamesSection" class="section">
+  <div class="game-item"
+       onclick="window.open('https://play.google.com/store/apps/details?id=com.ktdeveloper.beerscatcher','_blank')">
+    <img src="beerscatcher-icon.png" alt="Beers Catcher">
+    <h3>Beers Catcher</h3>
+    <span>Google Play</span>
+  </div>
+</div>
 
-        <!-- App Info -->
-        <div class="app-info">
-            <div class="app-title">Beers Catcher</div>
-            <div class="app-desc">Casual game – Catch the beers and score points!</div>
-            <div class="store-link">View on Google Play</div>
-        </div>
-    </a>
+<!-- CONTACT -->
+<div id="contactSection" class="section">
+  <div class="contact-box">
+    <h2>Contact</h2>
+
+    <div class="contact-item">
+      <strong class="contact-title">Email</strong>
+      <p class="contact-text">ktdeveloper51@gmail.com</p>
+      <a class="contact-btn" href="mailto:ktdeveloper51@gmail.com">
+        Send Email
+      </a>
+    </div><br>
+
+    <div class="contact-item">
+      <strong class="contact-title">Facebook</strong>
+      <a class="contact-btn"
+         href="https://www.facebook.com/gaming/KTDeveloper"
+         target="_blank">
+        Facebook Page
+      </a>
+    </div><br>
+
+    <div class="contact-item">
+      <strong class="contact-title">Store</strong>
+      <a class="contact-btn"
+         href="https://play.google.com/store/apps/dev?id=6471557478946980298"
+         target="_blank">
+        Google Play Store
+      </a>
+    </div><br>
+
+    <div class="contact-item">
+      <strong class="contact-title">Address</strong>
+      <p>
+        Thanh Xuan,<br>
+        Ha Noi,<br>
+        Viet Nam
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  © 2026 KT Studio – All rights reserved.<br><br>
+  <a href="https://sites.google.com/site/ktdeveloper51" target="_blank">
+    Privacy Policy
+  </a>
+</div>
+
+<script>
+function showSection(id, el) {
+  document.querySelectorAll('.section')
+    .forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+
+  document.querySelectorAll('nav a')
+    .forEach(a => a.classList.remove('active'));
+  el.classList.add('active');
+}
+</script>
 
 </body>
 </html>
